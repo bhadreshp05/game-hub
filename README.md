@@ -2,4 +2,4 @@
 
 Live Demo
 
-[Game Hub](https://game-hub-7s5l.onrender.com)
+[Game Hub](https://lustrous-pudding-68a155.netlify.app)
