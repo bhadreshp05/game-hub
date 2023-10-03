@@ -1,5 +1,5 @@
 import { SimpleGrid, Spinner, Text } from '@chakra-ui/react';
-import React from 'react';
+import { Fragment } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useGames from '../hooks/useGames';
 import GameCard from './GameCard';
@@ -41,13 +41,13 @@ const GameGrid = () => {
             </GameCardContainer>
           ))}
         {data?.pages.map((page, index) => (
-          <React.Fragment key={index}>
+          <Fragment key={index}>
             {page.results.map(game => (
               <GameCardContainer key={game.id}>
                 <GameCard game={game} />
               </GameCardContainer>
             ))}
-          </React.Fragment>
+          </Fragment>
         ))}
       </SimpleGrid>
     </InfiniteScroll>
