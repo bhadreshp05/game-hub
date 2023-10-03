@@ -1,7 +1,7 @@
 import {
   Button,
-  HStack,
   Heading,
+  HStack,
   Image,
   List,
   ListItem,
@@ -13,17 +13,16 @@ import useGameQueryStore from '../store';
 
 const GenreList = () => {
   const { data, isLoading, error } = useGenres();
-  const selectedGenreId = useGameQueryStore(state => state.gameQuery.genreId);
-  const setSelectedGenreId = useGameQueryStore(state => state.setGenreId);
+  const selectedGenreId = useGameQueryStore(s => s.gameQuery.genreId);
+  const setSelectedGenreId = useGameQueryStore(s => s.setGenreId);
 
   if (error) return null;
-  if (isLoading) {
-    return <Spinner />;
-  }
+
+  if (isLoading) return <Spinner />;
 
   return (
     <>
-      <Heading fontSize='2xl' marginBottom={3}>
+      <Heading fontSize='2xl' marginTop={9} marginBottom={3}>
         Genres
       </Heading>
       <List>
@@ -31,19 +30,18 @@ const GenreList = () => {
           <ListItem key={genre.id} paddingY='5px'>
             <HStack>
               <Image
-                objectFit='cover'
-                src={getCroppedImageUrl(genre.image_background)}
-                alt={genre.name}
                 boxSize='32px'
                 borderRadius={8}
+                objectFit='cover'
+                src={getCroppedImageUrl(genre.image_background)}
               />
               <Button
-                textAlign='left'
                 whiteSpace='normal'
-                fontWeight={selectedGenreId === genre.id ? 'bold' : 'normal'}
-                fontSize='lg'
-                variant='link'
+                textAlign='left'
+                fontWeight={genre.id === selectedGenreId ? 'bold' : 'normal'}
                 onClick={() => setSelectedGenreId(genre.id)}
+                fontSize='md'
+                variant='link'
               >
                 {genre.name}
               </Button>
